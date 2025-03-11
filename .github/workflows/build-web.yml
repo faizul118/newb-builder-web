@@ -24,12 +24,32 @@ on:
 jobs:
   build:
     runs-on: windows-2022
+      - name: Set environment variables
     env:
       murgi: hello
-    steps:
-      - name: Say hello
         run: |
-          Write-Output $env:murgi world! "${{ (github.event.inputs.platform == 'Windows')"
+          
+
+          switch (${{ github.event.inputs.platform }}) {
+            'Windows' { echo "The platform is Windows" }
+            'Android' { echo "The platform is Android" }
+            'IOS' { echo "The platform is iOS" }
+            'Merged' { echo "The platform is Merged" }
+            'All' { echo "The platform is All" }
+            default { echo "The platform is unknown" }
+          }
+
+
+
+
+
+
+
+
+
+
+
+
 #      - name: Set environment variables
 #        run: echo ${{ (github.event.inputs.platform == 'Windows')
 #    if 
