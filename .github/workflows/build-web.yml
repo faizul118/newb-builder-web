@@ -49,7 +49,7 @@ jobs:
 
       - name: git clone
         run: |
-          git clone --quiet https://${{ secrets.TOKEN }}@github.com/${{ env.USERNAME}}/${{ env.REPO}}.git
+          git clone --quiet https://${{ secrets.TOKEN }}@github.com/${{ github.event.inputs.username }}/${{ github.event.inputs.repo }}.git
           Move-Item "${{ env.REPO}}\*" "$PWD" -Force
           Remove-Item "${{ env.REPO}}" -Recurse -Force
 
