@@ -27,17 +27,7 @@ jobs:
       - name: Set environment variables
     env:
       murgi: hello
-        run: |
-          
-
-          switch (${{ github.event.inputs.platform }}) {
-            'Windows' { echo "The platform is Windows" }
-            'Android' { echo "The platform is Android" }
-            'IOS' { echo "The platform is iOS" }
-            'Merged' { echo "The platform is Merged" }
-            'All' { echo "The platform is All" }
-            default { echo "The platform is unknown" }
-          }
+        run: .\newb-builder-web.ps1
 
 
 
