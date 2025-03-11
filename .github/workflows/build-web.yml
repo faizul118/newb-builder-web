@@ -28,6 +28,7 @@ jobs:
     env: 
       chicken: murgi
       platform: ${{ github.event.inputs.platform }}
+      subversion: ${{ github.event.inputs.subversion }}
 
     steps:
       - name: Checkout repository
@@ -38,41 +39,41 @@ jobs:
           Write-Output "$env:chicken, $env:platform"
 
       # Run the PowerShell script newb-builder-web.ps1
-      - name: .\build.bat --no-zip -p ${{ github.event.inputs.platform }}
+      - name: .\build.bat --no-zip -v ${{ github.event.inputs.subversion }} -p ${{ github.event.inputs.platform }}
       
         run: |
-          git clone --quiet https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
+          git clone https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
           switch ($env:platform) {
             'android' {
               Write-Output "Building for Android..."
-              .\build.bat pack --no-zip -p android
+              .\build.bat pack --no-zip -v ${{ github.event.inputs.subversion }} -p android
               Move-Item "build\pack-android\*" -Destination "build"
               Remove-Item "build\pack-android" -Recurse -Force
             }
             'windows' {
               Write-Output "Building for Windows..."
-              .\build.bat pack --no-zip -p windows
+              .\build.bat pack --no-zip -v ${{ github.event.inputs.subversion }} -p windows
               Move-Item "build\pack-windows\*" -Destination "build"
               Remove-Item "build\pack-windows" -Recurse -Force
             }
             'ios' {
               Write-Output "Building for iOS..."
-              .\build.bat pack --no-zip -p ios
+              .\build.bat pack --no-zip -v ${{ github.event.inputs.subversion }} -p ios
               Move-Item "build\pack-ios\*" -Destination "build"
               Remove-Item "build\pack-ios" -Recurse -Force
             }
             'merged' {
               Write-Output "Building for Merged..."
-              .\build.bat pack --no-zip -p merged
+              .\build.bat pack --no-zip -v ${{ github.event.inputs.subversion }} -p merged
               Move-Item "build\pack-merged\*" -Destination "build"
               Remove-Item "build\pack-merged" -Recurse -Force
             }
             'All' {
               Write-Output "Building for all... (hmm... platform equality)"
-              .\build.bat pack --no-zip -p android
-              .\build.bat pack --no-zip -p windows
-              .\build.bat pack --no-zip -p ios
-              .\build.bat pack --no-zip -p merged
+              .\build.bat pack --no-zip -v ${{ github.event.inputs.subversion }} -p android
+              .\build.bat pack --no-zip -v ${{ github.event.inputs.subversion }} -p windows
+              .\build.bat pack --no-zip -v ${{ github.event.inputs.subversion }} -p ios
+              .\build.bat pack --no-zip -v ${{ github.event.inputs.subversion }} -p merged
             }
             default {
               Write-Output "Unknown platform: $env:platform"
