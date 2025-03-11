@@ -10,6 +10,16 @@ on:
 #      - main
   workflow_dispatch:
     inputs:
+      username: 
+        description: GitHub username
+        default: ${{ env.USERNAME}}
+        required: true
+        type: string
+      repo: 
+        description: GitHub repo
+        default: ${{ env.REPO}}
+        required: true
+        type: string
       subversion:
         description: 'Sub-version (eg: 46)'
         required: true
