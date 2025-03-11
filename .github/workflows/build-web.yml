@@ -40,6 +40,9 @@ jobs:
       # Run the PowerShell script newb-builder-web.ps1
       - name: .\build.bat --no-zip -p ${{ github.event.inputs.platform }}
         run: |
+          {
+            Write-Output hello
+          }
           switch ($env:platform) {
             'android' {
               Write-Output "Building for Android..."
