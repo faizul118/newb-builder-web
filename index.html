@@ -61,6 +61,16 @@
             background-color: #6c757d;
             cursor: not-allowed;
         }
+
+        .switch {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .switch input {
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -79,25 +89,66 @@
             <input type="text" id="targetversion" name="targetversion" required>
 
             <label for="targetplatform">Target platform:</label>
-            <label><input type="radio" name="targetplatform" value="android" required>
-                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMCAwIDU3NiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQyMC41NSwzMDEuOTNhMjQsMjQsMCwxLDEsMjQtMjQsMjQsMjQsMCwwLDEtMjQsMjRtLTI2NS4xLDBhMjQsMjQsMCwxLDEsMjQtMjQsMjQsMjQsMCwwLDEtMjQsMjRtMjczLjctMTQ0LjQ4LDQ3Ljk0LTgzYTEwLDEwLDAsMSwwLTE3LjI3LTEwaDBsLTQ4LjU0LDg0LjA3YTMwMS4yNSwzMDEuMjUsMCwwLDAtMjQ2LjU2LDBMMTE2LjE4LDY0LjQ1YTEwLDEwLDAsMSwwLTE3LjI3LDEwaDBsNDcuOTQsODNDNjQuNTMsMjAyLjIyLDguMjQsMjg1LjU1LDAsMzg0SDU3NmMtOC4yNC05OC40NS02NC41NC0xODEuNzgtMTQ2Ljg1LTIyNi41NSIvPjwvc3ZnPg==" alt="Android logo" style="height: 1.2em; vertical-align: bottom; margin-right: 0.3em;">Android</label>
-            <label><input type="radio" name="targetplatform" value="ios"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDU2LjY5MyA1Ni42OTMiIGhlaWdodD0iNTYuNjkzcHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1Ni42OTMgNTYuNjkzIiB3aWR0aD0iNTYuNjkzcHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnPjxwYXRoIGQ9Ik00MS43NzcsMzAuNTE3Yy0wLjA2Mi02LjIzMiw1LjA4Mi05LjIyMSw1LjMxMi05LjM3MmMtMi44OTEtNC4yMjctNy4zOTUtNC44MDctOC45OTgtNC44NzMgICBjLTMuODMtMC4zODktNy40NzcsMi4yNTYtOS40MiwyLjI1NmMtMS45MzksMC00Ljk0MS0yLjE5OS04LjExNy0yLjE0M2MtNC4xNzgsMC4wNjItOC4wMjksMi40My0xMC4xNzksNi4xNyAgIGMtNC4zMzksNy41MjctMS4xMSwxOC42ODIsMy4xMTgsMjQuNzkxYzIuMDY3LDIuOTg2LDQuNTMyLDYuMzQ2LDcuNzY2LDYuMjIzYzMuMTE3LTAuMTIzLDQuMjkzLTIuMDE2LDguMDYxLTIuMDE2ICAgczQuODI2LDIuMDE2LDguMTIzLDEuOTUzYzMuMzUyLTAuMDYxLDUuNDc3LTMuMDQzLDcuNTI3LTYuMDQxYzIuMzczLTMuNDY5LDMuMzUtNi44MjgsMy40MDgtNi45OTggICBDNDguMzA1LDQwLjQzMyw0MS44NDQsMzcuOTU4LDQxLjc3NywzMC41MTd6Ii8+PHBhdGggZD0iTTM1LjU4MiwxMi4yMjljMS43MTUtMi4wODIsMi44NzctNC45NzUsMi41NjEtNy44NTVjLTIuNDc1LDAuMS01LjQ3MSwxLjY0NS03LjI0OCwzLjcyNSAgIGMtMS41OTIsMS44NDYtMi45ODQsNC43ODUtMi42MTEsNy42MTNDMzEuMDQ1LDE1LjkyNiwzMy44NjEsMTQuMzA3LDM1LjU4MiwxMi4yMjl6Ii8+PC9nPjwvc3ZnPg==" alt="iOS logo" style="height: 1.5em; vertical-align: bottom; padding-left: 0.1em;">
-                iOS</label>
-            <label><input type="radio" name="targetplatform" value="windows"> 
-                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDU2LjY5MyA1Ni42OTMiIGhlaWdodD0iNTYuNjkzcHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1Ni42OTMgNTYuNjkzIiB3aWR0aD0iNTYuNjkzcHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnPjxwYXRoIGQ9Ik0zLjc2NSw0Ni4zNjJsMTkuODM2LDIuODczVjMwLjI1N0gzLjc2NVY0Ni4zNjJ6IE0zLjc2NSwyNy41NDZoMTkuODM2VjguNTY2TDMuNzY1LDExLjQzOVYyNy41NDZ6IE0yNi4zMTIsNDkuNjI4ICAgbDI2LjYxNiwzLjg1NVYzMC4yNTdIMjYuMzEyVjQ5LjYyOHogTTI2LjMxMiw4LjE3MnYxOS4zNzRoMjYuNjE2VjQuMzE5TDI2LjMxMiw4LjE3MnoiLz48L2c+PC9zdmc+" alt="Windows logo" style="height: 1.2em; vertical-align: bottom; margin-right: 0.4em;">Windows
-              </label>
-              
+            <label><input type="radio" name="targetplatform" value="android" required> Android</label>
+            <label><input type="radio" name="targetplatform" value="ios"> iOS</label>
+            <label><input type="radio" name="targetplatform" value="windows"> Windows</label>
+            <hr style="opacity: 0.375;">
             <label><input type="radio" name="targetplatform" value="merged"> Merged</label>
             <label><input type="radio" name="targetplatform" value="all"> All</label>
             <br>
             <label for="pat">GitHub PAT:</label>
             <input type="password" id="pat" name="pat" required>
 
+            <div class="switch">
+                <input type="checkbox" id="remember-switch" style="margin-bottom: 0.9em;">
+                <label for="remember-switch">Remember these values</label>
+            </div>
+
             <button type="submit" id="submit-button"><b>Build shader</b></button>
         </form>
     </div>
 
     <script>
+        function saveData() {
+            const USERNAME = document.getElementById('USERNAME').value;
+            const REPO = document.getElementById('REPO').value;
+            const subversion = document.getElementById('targetversion').value;
+            const platform = document.querySelector('input[name="targetplatform"]:checked').value;
+            const rememberSwitch = document.getElementById('remember-switch').checked;
+
+            const data = {
+                USERNAME,
+                REPO,
+                subversion,
+                platform,
+                rememberSwitch,
+                timestamp: new Date().getTime()
+            };
+
+            localStorage.setItem('formData', JSON.stringify(data));
+        }
+
+        function loadData() {
+            const data = JSON.parse(localStorage.getItem('formData'));
+            if (data) {
+                const now = new Date().getTime();
+                const sevenDays = 7 * 24 * 60 * 60 * 1000;
+                if (now - data.timestamp > sevenDays) {
+                    localStorage.removeItem('formData');
+                    return;
+                }
+                document.getElementById('USERNAME').value = data.USERNAME;
+                document.getElementById('REPO').value = data.REPO;
+                document.getElementById('targetversion').value = data.subversion;
+                document.querySelector(`input[name="targetplatform"][value="${data.platform}"]`).checked = true;
+                document.getElementById('remember-switch').checked = data.rememberSwitch;
+            }
+        }
+
+        function clearData() {
+            localStorage.removeItem('formData');
+        }
+
         document.getElementById('workflow-form').addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -143,6 +194,9 @@
                                         const run = data.workflow_runs[0];
                                         const runUrl = `https://github.com/${USERNAME}/newb-builder-web/actions/runs/${run.id}`;
                                         submitButton.innerHTML = `<b><a href="${runUrl}" style="color: white; text-decoration: none;">See workflow progress</a></b>`;
+                                        if (document.getElementById('remember-switch').checked) {
+                                            saveData();
+                                        }
                                     } else {
                                         submitButton.innerHTML = '<b>No workflow runs found.</b>';
                                     }
@@ -166,6 +220,14 @@
                     submitButton.disabled = false;
                 });
         });
+
+        document.getElementById('remember-switch').addEventListener('change', function () {
+            if (!this.checked) {
+                clearData();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 

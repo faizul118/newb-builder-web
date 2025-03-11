@@ -50,8 +50,8 @@ jobs:
       - name: git clone
         run: |
           git clone --quiet https://${{ secrets.TOKEN }}@github.com/${{ github.event.inputs.username }}/${{ github.event.inputs.repo }}.git
-          Move-Item "${{ env.REPO}}\*" "$PWD" -Force
-          Remove-Item "${{ env.REPO}}" -Recurse -Force
+          Move-Item "${{ github.event.inputs.repo }}\*" "$PWD" -Force
+          Remove-Item "${{ github.event.inputs.repo }}" -Recurse -Force
 
       - name: Setup Python 3.11
         uses: actions/setup-python@v5
@@ -119,5 +119,5 @@ jobs:
       - name: Upload artifact (${{ github.event.inputs.platform }})
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.REPO}}-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ env.SHORT_HASH }}
+          name: ${{ github.event.inputs.repo }}-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ env.SHORT_HASH }}
           path: ./build
