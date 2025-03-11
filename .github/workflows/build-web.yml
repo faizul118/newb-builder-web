@@ -84,11 +84,11 @@ jobs:
             }
           }
 
-      - name: Upload artifact (${{ github.event.inputs.platform }})
-        run: |
-          echo "CURRENT_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+      - name: Generate date hmm
+        run: echo "CURRENT_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
         shell: bash
 
+      - name: Upload artifact (${{ github.event.inputs.platform }})
         uses: actions/upload-artifact@v4
         with:
           name: newb-x-testing-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ github.sha::7 }}
