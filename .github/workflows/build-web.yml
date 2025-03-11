@@ -30,8 +30,8 @@ jobs:
       - name: Say hello
         run: |
           Write-Output $env:NAME world!
-      - name: Set environment variables
-        run: echo ${{ (github.event.inputs.platform == 'Windows')
+#      - name: Set environment variables
+#        run: echo ${{ (github.event.inputs.platform == 'Windows')
 #    if 
 #    runs-on: windows-2022
 #    steps:
