@@ -1,7 +1,7 @@
 name: Another Newb Builder
 
 env:
-  USERNAME: "faizul1s18"
+  USERNAME: "faizul118"
   REPO:     "newb-x-testing"
 
 on:
