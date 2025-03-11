@@ -1,26 +1,7 @@
 name: Build from Web/Dispatch
 
 on:
-  repository_dispatch:
-    types: [trigger-action]
   workflow_dispatch:
-  
-    inputs:
-      subversion:
-        description: 'Sub-version (eg: 46)'
-        required: true
-        type: string
-      platform:
-        description: 'platform'
-        required: true
-        default: 'All'
-        type: choice
-        options:
-        - Android
-        - Windows
-        - IOS
-        - Merged
-        - All (separately)
 
 jobs:
   build:
