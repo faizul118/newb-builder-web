@@ -1,4 +1,8 @@
-name: Windows 2022 Build
+name: Another Newb Builder
+
+env:
+  USERNAME: "faizul1s18"
+  REPO:     "newb-x-testing"
 
 on:
 #  push:
@@ -36,9 +40,9 @@ jobs:
 
       - name: git clone
         run: |
-          git clone --quiet https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
-          Move-Item "newb-x-testing\*" "$PWD" -Force
-          Remove-Item "newb-x-testing" -Recurse -Force
+          git clone --quiet https://${{ secrets.TOKEN }}@github.com/${{ env.USERNAME}}/${{ env.REPO}}.git
+          Move-Item "${{ env.REPO}}\*" "$PWD" -Force
+          Remove-Item "${{ env.REPO}}" -Recurse -Force
 
       - name: Setup Python 3.11
         uses: actions/setup-python@v5
@@ -106,5 +110,5 @@ jobs:
       - name: Upload artifact (${{ github.event.inputs.platform }})
         uses: actions/upload-artifact@v4
         with:
-          name: newb-x-testing-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ env.SHORT_HASH }}
+          name: ${{ env.REPO}}-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ env.SHORT_HASH }}
           path: ./build
