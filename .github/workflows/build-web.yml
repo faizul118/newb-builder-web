@@ -54,7 +54,9 @@ jobs:
             ${{ github.workspace }}/tool/data
 
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          .\build.bat setup
 
       - name: .\build.bat --no-zip -v ${{ github.event.inputs.subversion }} -p ${{ github.event.inputs.platform }}
         run: |
