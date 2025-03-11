@@ -15,7 +15,7 @@ on:
         options:
         - Android
         - Windows
-        - IOS
+        - iOS
         - Merged
         - All
 
@@ -24,13 +24,14 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      # Checkout the repository to access the code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Set the environment variable MURGI
-      - name: Set MURGI environment variable
+      - name: Set environment variable
+        env: |
+          chicken: murgi
         run: |
+          Write-Output $env:chicken
           echo "MURGI=hello" >> $env:GITHUB_ENV
           echo "PLATFORM=${{ github.event.inputs.platform }}" >> $env:GITHUB_ENV
 

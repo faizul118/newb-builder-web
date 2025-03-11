@@ -1,11 +1,20 @@
 $platform = $env:PLATFORM
 
 switch ($platform) {
-    'Windows' { Write-Output "The platform is Windows" }
-    'Android' { Write-Output "The platform is Android" }
-    'IOS' { Write-Output "The platform is iOS" }
-    'Merged' { Write-Output "The platform is Merged" }
-    'All' { Write-Output "The platform is All" }
-    default { Write-Output "The platform is unknown" }
+    'Android' {
+        Write-Output Building for Android...
+    }
+    'Windows' {
+        Write-Output Building for Windows...
+    }
+    'iOS' {
+        Write-Output Building for iOS...
+    }
+    'Merged' {
+        Write-Output Building for Merged...
+    }
+    'All' {
+        Write-Output Building for all...
+    }
 }
 Write-Output $env:MURGI World!
