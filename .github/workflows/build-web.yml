@@ -85,11 +85,13 @@ jobs:
           }
 
       - name: Generate date hmm
-        run: echo "CURRENT_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+        run: |
+          echo "CURRENT_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+          echo "SHORT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
         shell: bash
 
       - name: Upload artifact (${{ github.event.inputs.platform }})
         uses: actions/upload-artifact@v4
         with:
-          name: newb-x-testing-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ substring(github.sha, 0, 7) }}
+          name: newb-x-testing-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ env.SHORT_HASH }}
           path: ./build
