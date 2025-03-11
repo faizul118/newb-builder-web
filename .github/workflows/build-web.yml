@@ -2,6 +2,22 @@ name: Windows 2022 Build
 
 on:
   workflow_dispatch:
+    inputs:
+      subversion:
+        description: 'Sub-version (eg: 46)'
+        required: true
+        type: string
+      platform:
+        description: 'platform'
+        required: true
+        default: 'All'
+        type: choice
+        options:
+        - Android
+        - Windows
+        - IOS
+        - Merged
+        - All
 
 jobs:
   build:
