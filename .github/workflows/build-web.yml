@@ -1,6 +1,9 @@
 name: Windows 2022 Build
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       subversion:
