@@ -1,4 +1,6 @@
-switch (${{ github.event.inputs.platform }}) {
+$platform = $env:PLATFORM
+
+switch ($platform) {
     'Windows' { Write-Output "The platform is Windows" }
     'Android' { Write-Output "The platform is Android" }
     'IOS' { Write-Output "The platform is iOS" }
