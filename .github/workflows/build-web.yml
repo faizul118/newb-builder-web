@@ -31,8 +31,8 @@ jobs:
       subversion: ${{ github.event.inputs.subversion }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      #- name: Checkout repository
+        #uses: actions/checkout@v4
 
       - name: Set environment variable
         run: |
@@ -41,7 +41,7 @@ jobs:
       - name: git clone
         run: |
           git clone --quiet https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
-          Move-Item "newb-x-testing\*" .
+          Move-Item "newb-x-testing\*" "$PWD" -Force
           Remove-Item "newb-x-testing" -Recurse -Force
 
 
