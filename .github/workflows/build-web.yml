@@ -1,27 +1,23 @@
-name: Build from Web
+name: Windows 2022 Build
 
 on:
   workflow_dispatch:
-    inputs:
-      subversion:
-        description: 'Sub-version (eg: 46)'
-        required: true
-        type: string
-      platform:
-        description: 'platform'
-        required: true
-        default: 'All'
-        type: choice
-        options:
-        - Android
-        - Windows
-        - IOS
-        - Merged
-        - All
 
 jobs:
-  windows:
+  build:
     runs-on: windows-2022
-    name: hello
+
     steps:
-      run: .\newb-builder-web.ps1
+      # Checkout the repository to access the code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Set the environment variable MURGI
+      - name: Set MURGI environment variable
+        run: |
+          echo "MURGI=hello" >> $env:GITHUB_ENV
+
+      # Run the PowerShell script newb-builder-web.ps1
+      - name: Run newb-builder-web.ps1
+        run: |
+          .\newb-builder-web.ps1

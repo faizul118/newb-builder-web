@@ -6,4 +6,4 @@ switch (${{ github.event.inputs.platform }}) {
     'All' { Write-Output "The platform is All" }
     default { Write-Output "The platform is unknown" }
 }
-Write-Output $env:murgi World!
+Write-Output $env:MURGI World!
