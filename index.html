@@ -181,6 +181,8 @@
             })
                 .then(response => {
                     if (response.ok) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<b>Waiting for workflow to start...</b>';
                         setTimeout(() => {
                             fetch(`https://api.github.com/repos/${USERNAME}/newb-builder-web/actions/runs`, {
                                 method: 'GET',
@@ -199,6 +201,7 @@
                                         }
                                     } else {
                                         submitButton.innerHTML = '<b>No workflow runs found.</b>';
+                                        submitButton.disabled = false;
                                     }
                                     submitButton.disabled = false;
                                 })
