@@ -1,6 +1,4 @@
-$platform = $env:PLATFORM
-
-switch ($platform) {
+switch ($env:platform) {
     'android' {
         Write-Output Building for Android...
         .\build.bat pack --no-zip -p android
