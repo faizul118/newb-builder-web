@@ -1,9 +1,5 @@
 name: Another Newb Builder
 
-env:
-  USERNAME: "faizul118"
-  REPO:     "newb-x-testing"
-
 on:
 #  push:
 #    branches:
@@ -15,12 +11,12 @@ on:
     inputs:
       username: 
         description: GitHub username
-        default: ${{ env.USERNAME}}
+        default: faizul118
         required: true
         type: string
       repo: 
         description: GitHub repo
-        default: ${{ env.REPO}}
+        default: newb-x-testing
         required: true
         type: string
       subversion:
