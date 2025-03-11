@@ -91,5 +91,5 @@ jobs:
       - name: Upload artifact (${{ github.event.inputs.platform }})
         uses: actions/upload-artifact@v4
         with:
-          name: newb-x-testing-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ github.sha::7 }}
+          name: newb-x-testing-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ substring(github.sha, 0, 7) }}
           path: ./build
