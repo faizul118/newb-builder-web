@@ -22,6 +22,6 @@ on:
 jobs:
   windows:
     runs-on: windows-2022
+    name: hello
     steps:
-      run: |
-        .\newb-builder-web.ps1
+      run: .\newb-builder-web.ps1
