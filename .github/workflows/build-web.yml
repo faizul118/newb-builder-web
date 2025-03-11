@@ -34,17 +34,17 @@ jobs:
       #- name: Checkout repository
         #uses: actions/checkout@v4
 
-      - name: Setup Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11' 
-          cache: 'pip'
-
       - name: git clone
         run: |
           git clone --quiet https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
           Move-Item "newb-x-testing\*" "$PWD" -Force
           Remove-Item "newb-x-testing" -Recurse -Force
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' 
+          cache: 'pip'
 
       - name: .\build.bat setup
         uses: actions/cache@v4
@@ -54,7 +54,7 @@ jobs:
             ${{ github.workspace }}/tool/data
 
       - name: Install Python dependencies
-        run: p install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: .\build.bat --no-zip -v ${{ github.event.inputs.subversion }} -p ${{ github.event.inputs.platform }}
         run: |
