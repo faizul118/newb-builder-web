@@ -34,9 +34,11 @@ jobs:
       #- name: Checkout repository
         #uses: actions/checkout@v4
 
-      - name: Set environment variable
-        run: |
-          Write-Output "$env:chicken, $env:platform"
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' 
+          cache: 'pip'
 
       - name: git clone
         run: |
@@ -44,6 +46,15 @@ jobs:
           Move-Item "newb-x-testing\*" "$PWD" -Force
           Remove-Item "newb-x-testing" -Recurse -Force
 
+      - name: .\build.bat setup
+        uses: actions/cache@v4
+        with:
+          key: env-files-win-laz
+          path: |
+            ${{ github.workspace }}/tool/data
+
+      - name: Install Python dependencies
+        run: p install -r requirements.txt
 
       - name: .\build.bat --no-zip -v ${{ github.event.inputs.subversion }} -p ${{ github.event.inputs.platform }}
         run: |
