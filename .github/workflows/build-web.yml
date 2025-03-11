@@ -39,7 +39,10 @@ jobs:
           Write-Output "$env:chicken, $env:platform"
 
       - name: git clone
-        run: git clone https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
+        run: |
+          git clone --quiet https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
+          Move-Item "newb-x-testing\*" .
+
 
       - name: .\build.bat --no-zip -v ${{ github.event.inputs.subversion }} -p ${{ github.event.inputs.platform }}
         run: |
@@ -81,7 +84,11 @@ jobs:
           }
 
       - name: Upload artifact (${{ github.event.inputs.platform }})
+        run: |
+          echo "CURRENT_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+        shell: bash
+
         uses: actions/upload-artifact@v4
         with:
-          name: newb-x-testing-${{ github.event.inputs.platform }}
+          name: newb-x-testing-${{ github.event.inputs.platform }}-${{ env.CURRENT_DATE }}-${{ github.sha::7 }}
           path: ./build
