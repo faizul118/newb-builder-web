@@ -42,6 +42,7 @@ jobs:
         run: |
           git clone --quiet https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
           Move-Item "newb-x-testing\*" .
+          Remove-Item "newb-x-testing" -Recurse -Force
 
 
       - name: .\build.bat --no-zip -v ${{ github.event.inputs.subversion }} -p ${{ github.event.inputs.platform }}
