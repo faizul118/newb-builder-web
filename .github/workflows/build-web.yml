@@ -1,9 +1,9 @@
 name: Windows 2022 Build
 
 on:
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
   workflow_dispatch:
     inputs:
       subversion:
@@ -16,11 +16,11 @@ on:
         default: 'All'
         type: choice
         options:
-        - Android
-        - Windows
-        - iOS
-        - Merged
-        - All
+        - android
+        - windows
+        - ios
+        - merged
+        - all
 
 jobs:
   build:
@@ -40,4 +40,15 @@ jobs:
       # Run the PowerShell script newb-builder-web.ps1
       - name: Run newb-builder-web.ps1
         run: |
-          .\newb-builder-web.ps1
+          switch ($env:platform) { 
+          'android' { Write-Output "Building for Android..."; .\build.bat pack --no-zip -p android } `
+          'windows' { Write-Output "Building for Windows..."; .\build.bat pack --no-zip -p windows } `
+          'ios' { Write-Output "Building for iOS..."; .\build.bat pack --no-zip -p ios } `
+          'merged' { Write-Output "Building for Merged..."; .\build.bat pack --no-zip -p merged } `
+          'All' { Write-Output "Building for all... (hmm... platform equality)"; `
+          .\build.bat pack --no-zip -p android; `
+          .\build.bat pack --no-zip -p windows; `
+          .\build.bat pack --no-zip -p ios; `
+          .\build.bat pack --no-zip -p merged } 
+          }
+
