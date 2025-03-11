@@ -38,11 +38,11 @@ jobs:
         run: |
           Write-Output "$env:chicken, $env:platform"
 
-      # Run the PowerShell script newb-builder-web.ps1
+      - name: git clone
+        run: git clone https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
+
       - name: .\build.bat --no-zip -v ${{ github.event.inputs.subversion }} -p ${{ github.event.inputs.platform }}
-      
         run: |
-          git clone https://${{ secrets.TOKEN }}@github.com/faizul118/newb-x-testing.git
           switch ($env:platform) {
             'android' {
               Write-Output "Building for Android..."
