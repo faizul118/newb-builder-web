@@ -32,7 +32,9 @@ jobs:
 
       - name: Set environment variable
         run: |
-          Write-Output "$env:chicken, "$env:platform"
+          Write-Output "$env:chicken, $env:platform"
+          echo "MURGI=hello" >> $env:GITHUB_ENV
+          echo "PLATFORM=${{ github.event.inputs.platform }}" >> $env:GITHUB_ENV
 
       # Run the PowerShell script newb-builder-web.ps1
       - name: Run newb-builder-web.ps1
