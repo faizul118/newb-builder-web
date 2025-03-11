@@ -23,6 +23,5 @@ jobs:
   windows:
     runs-on: windows-2022
     steps:
-      name: Set environment variable
       run: |
         .\newb-builder-web.ps1
