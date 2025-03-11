@@ -80,7 +80,7 @@ jobs:
           }
 
       - name: Upload artifact (${{ github.event.inputs.platform }})
-      - uses: actions/upload-artifact@v4
-        with:
-          name: newb-x-testing-${{ github.event.inputs.platform }}
-          path: ./build
+        uses: actions/upload-artifact@v4
+          with:
+            name: newb-x-testing-${{ github.event.inputs.platform }}
+            path: ./build
