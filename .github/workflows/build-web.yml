@@ -38,7 +38,7 @@ jobs:
           Write-Output "$env:chicken, $env:platform"
 
       # Run the PowerShell script newb-builder-web.ps1
-      - name: Run newb-builder-web.ps1
+      - name: .\build.bat --no-zip -p ${{ github.event.inputs.platform }}
         run: |
           switch ($env:platform) { 
           'android' { Write-Output "Building for Android..."; .\build.bat pack --no-zip -p android } `

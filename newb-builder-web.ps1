@@ -25,4 +25,4 @@ switch ($env:platform) {
         .\build.bat pack --no-zip -p merged
     }
 }
-Write-Output $env:MURGI World!
+Write-Output $env: World!
